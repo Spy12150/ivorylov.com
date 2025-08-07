@@ -85,7 +85,9 @@ code {
 }
 
 /* Instant scrolling for page navigation, smooth for internal links */
-
+html {
+  overflow-y: scroll;
+}
 
 /* Remove default margins and padding */
 * {

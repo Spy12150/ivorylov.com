@@ -11,7 +11,7 @@ const Projects = () => {
     <div className="page-container projects-page">
               <div className="page-header">
           <h1 className="page-title">Projects</h1>
-          <p className="page-subtitle">A collection of my work and creative endeavors.</p>
+          <p className="page-subtitle">A collection of my work and creative endeavors. More to come!</p>
         </div>
       <div className="content-section">
         <div className="projects-grid">

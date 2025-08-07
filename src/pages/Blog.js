@@ -34,39 +34,30 @@ const Blog = () => {
 
   const getPreviewContent = (content) => {
     const paragraphs = content.split('\n').filter(p => p.trim());
-    const previewText = paragraphs.join(' ');
-    const words = previewText.split(' ');
-    
-    // Show approximately 5 lines worth of content (roughly 80-100 words)
-    if (words.length > 80) {
-      return words.slice(0, 80).join(' ') + '...';
-    }
-    return previewText;
+    // Show first paragraph completely
+    const firstParagraph = paragraphs[0] || '';
+    return firstParagraph;
   };
 
   const getRemainingContent = (content) => {
     const paragraphs = content.split('\n').filter(p => p.trim());
-    const previewText = paragraphs.join(' ');
-    const words = previewText.split(' ');
-    
-    if (words.length > 80) {
-      return words.slice(80).join(' ');
-    }
-    return '';
+    // Return all paragraphs except the first one
+    const remainingParagraphs = paragraphs.slice(1);
+    return remainingParagraphs.map((paragraph, index) => (
+      <p key={index}>{paragraph.trim()}</p>
+    ));
   };
 
   const shouldShowExpand = (content) => {
     const paragraphs = content.split('\n').filter(p => p.trim());
-    const previewText = paragraphs.join(' ');
-    const words = previewText.split(' ');
-    return words.length > 80;
+    return paragraphs.length > 1;
   };
 
   return (
     <div className="blog-container">
       <div className="blog-header">
         <h1 className="blog-title">My Blog</h1>
-        <p className="blog-subtitle">My views on the world</p>
+
       </div>
 
       {/* Tag Filter */}
@@ -133,7 +124,7 @@ const Blog = () => {
 
               {expandedPost === post.id && shouldShowExpand(post.content) && (
                 <div className="post-content-expanded">
-                  <p>{getRemainingContent(post.content)}</p>
+                  {getRemainingContent(post.content)}
                   <button 
                     className="collapse-btn"
                     onClick={() => togglePost(post.id)}

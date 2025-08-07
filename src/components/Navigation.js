@@ -8,7 +8,7 @@ const Navigation = () => {
   return (
     <nav className="navigation">
       <div className="nav-container">
-              <Link to="/" className="nav-logo">
+              <Link to="/home" className="nav-logo">
         <img src="/IVLlogo4.svg" alt="Ivory's Logo" className="logo-image" />
         <span className="logo-text">Ivorylov</span>
       </Link>

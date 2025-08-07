@@ -6,6 +6,9 @@
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page-container.projects-page::before {
@@ -17,6 +20,8 @@
   padding: 4rem 2rem 3rem;
   max-width: 90%;
   margin: 0 auto;
+  margin-left: 3.5rem;
+  margin-right: -2.5rem
 }
 
 .projects-page .page-title {
@@ -29,6 +34,7 @@
 }
 
 .projects-page .page-subtitle {
+text-align:center;
   font-size: 1.2rem;
   color: #6b7280;
   font-weight: 400;
@@ -46,9 +52,10 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-top: 2rem;
+  width: 90%;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
