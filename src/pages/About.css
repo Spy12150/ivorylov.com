@@ -1,0 +1,189 @@
+/* About.css - About page specific styles */
+
+.page-container.about-page {
+  min-height: 100vh;
+  padding-top: 100px;
+  background: #FFFFFF;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page-container.about-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(212, 175, 223, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(168, 216, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 10% 80%, rgba(212, 175, 223, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(168, 216, 255, 0.05) 0%, transparent 35%);
+  z-index: -1;
+  animation: watercolorFloat 25s ease-in-out infinite reverse;
+}
+
+/* About Header with Headshot */
+.about-header {
+  text-align: center;
+  padding: 2rem 2rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.headshot-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Content Section */
+.about-page .content-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.about-page .content-section p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  text-align: left;
+  margin-bottom: 0.8rem;
+}
+
+.welcome-text {
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.intro-text {
+  font-size: 1.1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* About List Styling */
+.about-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 0.3rem;
+}
+
+.about-list li {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+  text-align: left;
+}
+
+/* Contact Section */
+.contact-section {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.contact-title {
+  font-size: 1.1rem !important;
+  color: #111827 !important;
+  margin-bottom: 0.3rem !important;
+  font-weight: 500 !important;
+}
+
+.contact-section p {
+  font-size: 1.05rem !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 0.8rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-link {
+  display: inline-block;
+  transition: all 0.3s ease;
+  color: #111827;
+}
+
+.social-link:hover {
+  color: #4a90e2;
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes watercolorFloat {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateX(15px) translateY(-10px) rotate(1deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-10px) translateY(5px) rotate(-0.5deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateX(5px) translateY(-15px) rotate(0.5deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .about-page .page-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .about-page .content-section {
+    padding: 0 1rem 3rem;
+  }
+  
+  .about-page .content-section p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page .page-header {
+    padding: 1rem;
+  }
+  
+  .about-page .content-section p {
+    font-size: 0.95rem;
+  }
+}

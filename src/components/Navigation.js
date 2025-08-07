@@ -8,9 +8,10 @@ const Navigation = () => {
   return (
     <nav className="navigation">
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          <span className="logo-text">Ivory</span>
-        </Link>
+              <Link to="/" className="nav-logo">
+        <img src="/IVLlogo4.svg" alt="Ivory's Logo" className="logo-image" />
+        <span className="logo-text">Ivorylov</span>
+      </Link>
         <div className="nav-links">
           <Link 
             to="/projects" 
@@ -23,12 +24,6 @@ const Navigation = () => {
             className={`nav-link ${location.pathname === '/blog' ? 'active' : ''}`}
           >
             Blog
-          </Link>
-          <Link 
-            to="/passions" 
-            className={`nav-link ${location.pathname === '/passions' ? 'active' : ''}`}
-          >
-            Passions
           </Link>
           <Link 
             to="/about" 

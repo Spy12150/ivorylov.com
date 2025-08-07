@@ -1,15 +1,165 @@
-import React from 'react';
-import './Pages.css';
+import React, { useState, useEffect } from 'react';
+import { blogPosts, getPostsByTag } from '../data/blogPosts';
+import './Blog2.css';
 
 const Blog = () => {
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [expandedPost, setExpandedPost] = useState(null);
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
+  // Get all unique tags
+  const allTags = [...new Set(blogPosts.flatMap(post => post.tags))];
+  
+  // Filter posts based on selected tag
+  const filteredPosts = selectedTag ? getPostsByTag(selectedTag) : blogPosts;
+
+  const handleTagClick = (tag) => {
+    setSelectedTag(selectedTag === tag ? null : tag);
+  };
+
+  const togglePost = (postId) => {
+    setExpandedPost(expandedPost === postId ? null : postId);
+  };
+
+  const formatContent = (content) => {
+    const paragraphs = content.split('\n').filter(p => p.trim());
+    return paragraphs.map((paragraph, index) => (
+      <p key={index}>{paragraph.trim()}</p>
+    ));
+  };
+
+  const getPreviewContent = (content) => {
+    const paragraphs = content.split('\n').filter(p => p.trim());
+    const previewText = paragraphs.join(' ');
+    const words = previewText.split(' ');
+    
+    // Show approximately 5 lines worth of content (roughly 80-100 words)
+    if (words.length > 80) {
+      return words.slice(0, 80).join(' ') + '...';
+    }
+    return previewText;
+  };
+
+  const getRemainingContent = (content) => {
+    const paragraphs = content.split('\n').filter(p => p.trim());
+    const previewText = paragraphs.join(' ');
+    const words = previewText.split(' ');
+    
+    if (words.length > 80) {
+      return words.slice(80).join(' ');
+    }
+    return '';
+  };
+
+  const shouldShowExpand = (content) => {
+    const paragraphs = content.split('\n').filter(p => p.trim());
+    const previewText = paragraphs.join(' ');
+    const words = previewText.split(' ');
+    return words.length > 80;
+  };
+
   return (
-    <div className="page-container">
-      <div className="page-header">
-        <h1 className="page-title">Blog</h1>
-        <p className="page-subtitle">My thoughts and musings</p>
+    <div className="blog-container">
+      <div className="blog-header">
+        <h1 className="blog-title">My Blog</h1>
+        <p className="blog-subtitle">My views on the world</p>
       </div>
-      <div className="content-section">
-        <p>Coming soon! This is where I'll share my thoughts, experiences, and learnings.</p>
+
+      {/* Tag Filter */}
+      <div className="tag-filter">
+        <h3>Filter by topic:</h3>
+        <div className="tag-list">
+          {allTags.map(tag => (
+            <button
+              key={tag}
+              className={`tag-button ${selectedTag === tag ? 'active' : ''}`}
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+          {selectedTag && (
+            <button 
+              className="clear-filter"
+              onClick={() => setSelectedTag(null)}
+            >
+              Clear Filter
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Blog Posts */}
+      <div className="blog-posts">
+        {filteredPosts.length === 0 ? (
+          <div className="no-posts">
+            <p>No posts found for the selected filter.</p>
+          </div>
+        ) : (
+          filteredPosts.map(post => (
+            <article key={post.id} className="blog-post">
+              <div className="post-header">
+                <h2 className="post-title">{post.title}</h2>
+                <div className="post-meta">
+                  <span className="post-date">{post.date}</span>
+                </div>
+              </div>
+              
+              <div className="post-content-preview">
+                {shouldShowExpand(post.content) ? (
+                  <>
+                    <p>{getPreviewContent(post.content)}</p>
+                    {expandedPost !== post.id && (
+                      <div className="content-fade">
+                        <div className="fade-overlay"></div>
+                        <button 
+                          className="expand-btn"
+                          onClick={() => togglePost(post.id)}
+                        >
+                          <span className="expand-icon">⌄</span>
+                          <span>read more</span>
+                        </button>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <p>{post.content}</p>
+                )}
+              </div>
+
+              {expandedPost === post.id && shouldShowExpand(post.content) && (
+                <div className="post-content-expanded">
+                  <p>{getRemainingContent(post.content)}</p>
+                  <button 
+                    className="collapse-btn"
+                    onClick={() => togglePost(post.id)}
+                  >
+                    <span className="collapse-icon">⌃</span>
+                    <span>show less</span>
+                  </button>
+                </div>
+              )}
+
+              {(expandedPost === post.id || !shouldShowExpand(post.content)) && (
+                <div className="post-tags">
+                  {post.tags.map(tag => (
+                    <span 
+                      key={tag} 
+                      className="post-tag"
+                      onClick={() => handleTagClick(tag)}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))
+        )}
       </div>
     </div>
   );

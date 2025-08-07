@@ -1,0 +1,190 @@
+/* Home.css - Home page specific styles */
+
+.page-container {
+  min-height: 100vh;
+  padding-top: 100px;
+  background: var(--bg-gradient);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(168, 216, 255, 0.2);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-content {
+  z-index: 2;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--light-blue), var(--light-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Sakura Decoration */
+.sakura-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sakura-petal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--light-pink);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(45deg);
+  opacity: 0.6;
+  animation: modernFloat 15s ease-in-out infinite;
+}
+
+.sakura-1 {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+  background: var(--light-blue);
+}
+
+.sakura-2 {
+  top: 20%;
+  right: 20%;
+  animation-delay: 2s;
+  background: var(--lilac);
+}
+
+.sakura-3 {
+  top: 60%;
+  left: 10%;
+  animation-delay: 4s;
+  background: var(--light-pink);
+}
+
+.sakura-4 {
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 6s;
+  background: var(--light-blue);
+}
+
+.sakura-5 {
+  top: 40%;
+  left: 80%;
+  animation-delay: 8s;
+  background: var(--lilac);
+}
+
+.sakura-6 {
+  top: 70%;
+  left: 70%;
+  animation-delay: 10s;
+  background: var(--light-pink);
+}
+
+.sakura-7 {
+  top: 30%;
+  right: 40%;
+  animation-delay: 12s;
+  background: var(--light-blue);
+}
+
+/* Animations */
+@keyframes modernFloat {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: rotate(45deg) translateY(-20px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-10px) scale(0.9);
+    opacity: 0.4;
+  }
+  75% {
+    transform: rotate(45deg) translateY(-30px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: 100% 50%;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-section {
+    margin: 1rem;
+    padding: 3rem 1.5rem;
+  }
+  
+  .sakura-petal {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    margin: 0.5rem;
+    padding: 2rem 1rem;
+  }
+}
