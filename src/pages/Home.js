@@ -11,7 +11,7 @@ const Home = () => {
     <div className="page-container home-page">
       <div className="image-container">
         <h1 className="image-title">COMM AVE</h1>
-        <img src="/123.jpg" alt="Main Image" className="main-image" />
+        <img src="/123.webp" alt="Main Image" className="main-image" />
       </div>
     </div>
   );

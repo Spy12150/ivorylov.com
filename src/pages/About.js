@@ -10,7 +10,7 @@ const About = () => {
   return (
     <div className="page-container about-page">
       <div className="about-header">
-        <img src="/Headshot.jpeg" alt="Headshot" className="headshot-image" />
+        <img src="/Headshot.webp" alt="Headshot" className="headshot-image" />
       </div>
       <div className="content-section">
         <p className="welcome-text">Welcome, my name is Max Wang</p>

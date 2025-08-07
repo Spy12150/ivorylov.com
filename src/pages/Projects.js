@@ -23,7 +23,7 @@ const Projects = () => {
           >
             <div className="project-image-container">
               <img 
-                src="/proj_img/pokerimg.png" 
+                src="/proj_img/pokerimg.webp" 
                 alt="Riposte Poker AI" 
                 className="project-image"
               />
@@ -32,7 +32,7 @@ const Projects = () => {
               <div className="project-title-container">
                 <h3 className="project-title">Riposte Poker AI</h3>
                 <img 
-                  src="/proj_img/poker.png" 
+                  src="/proj_img/poker.webp" 
                   alt="Poker Logo" 
                   className="project-logo"
                 />
@@ -57,7 +57,7 @@ const Projects = () => {
           >
             <div className="project-image-container">
               <img 
-                src="/proj_img/monkey.jpeg" 
+                src="/proj_img/monkey.webp" 
                 alt="Digital Literature Platform" 
                 className="project-image"
               />
